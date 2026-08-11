@@ -9,7 +9,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     * {
@@ -18,9 +22,10 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
     }
 
     body {
@@ -31,179 +36,310 @@
     }
 
     .page {
-      min-height: 100vh;
       width: 100%;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 25px;
+      position: relative;
     }
 
     .screen {
       width: 100%;
       max-width: 850px;
       text-align: center;
-      animation: reveal 0.9s cubic-bezier(.22,1,.36,1);
     }
 
     .hidden {
-      display: none;
+      display: none !important;
+    }
+
+    /* ---------------- INTRO ---------------- */
+
+    #intro {
+      animation: fadeIn 1.2s ease;
     }
 
     .eyebrow {
       font-size: 11px;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: #999;
       margin-bottom: 28px;
     }
 
-    h1,
-    h2,
-    .final-title {
+    .intro-title {
       font-family: "Playfair Display", serif;
+      font-size: clamp(60px, 12vw, 120px);
+      line-height: .9;
+      letter-spacing: -5px;
       font-weight: 500;
     }
 
-    h1 {
-      font-size: clamp(60px, 12vw, 120px);
-      letter-spacing: -5px;
-      line-height: .95;
-    }
-
-    h2 {
-      font-size: clamp(45px, 8vw, 82px);
-      letter-spacing: -3px;
-      line-height: 1;
-    }
-
-    .name {
+    .intro-title em {
       font-style: italic;
     }
 
-    .description {
-      max-width: 470px;
+    .intro-text {
+      max-width: 450px;
       margin: 30px auto 38px;
       color: #777;
-      font-size: 16px;
       line-height: 1.8;
+      font-size: 16px;
     }
 
-    button {
+    .start-btn {
       border: 0;
-      outline: 0;
       background: #171717;
       color: white;
-      padding: 15px 25px;
-      border-radius: 100px;
+      padding: 16px 28px;
+      border-radius: 999px;
       font-family: inherit;
+      cursor: pointer;
       font-size: 13px;
+      transition: .3s ease;
+    }
+
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    }
+
+    /* ---------------- COUNTDOWN ---------------- */
+
+    #countdownScreen {
+      animation: fadeIn .8s ease;
+    }
+
+    .countdown-label {
+      color: #999;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .countdown {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(100px, 25vw, 240px);
+      line-height: .8;
+      font-weight: 500;
+      letter-spacing: -10px;
+    }
+
+    .countdown-number {
+      animation: numberIn .7s cubic-bezier(.22,1,.36,1);
+    }
+
+    .countdown-sub {
+      margin-top: 40px;
+      color: #999;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    /* ---------------- BIRTHDAY ---------------- */
+
+    #birthdayScreen {
+      animation: reveal .9s cubic-bezier(.22,1,.36,1);
+    }
+
+    .date {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: #aaa;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .birthday-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(50px, 10vw, 105px);
+      line-height: .95;
+      letter-spacing: -4px;
+      font-weight: 500;
+    }
+
+    .birthday-title em {
+      font-style: italic;
+    }
+
+    .birthday-message {
+      max-width: 520px;
+      margin: 32px auto;
+      color: #707070;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .continue-btn {
+      border: 1px solid #ddd;
+      background: transparent;
+      color: #171717;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-family: inherit;
       cursor: pointer;
       transition: .25s ease;
     }
 
-    button:hover {
-      transform: translateY(-3px);
-      background: #292929;
-      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    .continue-btn:hover {
+      background: #171717;
+      color: white;
+      border-color: #171717;
     }
 
-    .arrow {
-      margin-left: 8px;
+    /* ---------------- FINAL ---------------- */
+
+    #finalScreen {
+      animation: reveal 1s cubic-bezier(.22,1,.36,1);
     }
 
-    /* Birthday */
-
-    .small-date {
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: 3px;
-      margin-bottom: 28px;
-    }
-
-    .birthday-message {
-      margin: 32px auto 38px;
-      max-width: 500px;
-      color: #6f6f6f;
-      font-size: 17px;
-      line-height: 1.9;
-    }
-
-    /* Quote */
-
-    .quote {
-      max-width: 700px;
-      margin: 35px auto 42px;
-      font-family: "Playfair Display", serif;
-      font-style: italic;
-      font-size: clamp(28px, 5vw, 46px);
-      line-height: 1.35;
-    }
-
-    .quote span {
+    .final-eyebrow {
       color: #999;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
     }
-
-    /* Final */
 
     .final-title {
-      font-size: clamp(40px, 7vw, 72px);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(40px, 7vw, 75px);
       line-height: 1.15;
+      font-weight: 500;
     }
 
-    .final-subtitle {
-      margin-top: 25px;
+    .final-title em {
+      font-style: italic;
+    }
+
+    .final-text {
+      margin-top: 28px;
       color: #777;
       font-size: 15px;
+      line-height: 1.8;
     }
 
     .heart {
+      display: inline-block;
       margin-top: 35px;
       font-size: 22px;
-      display: inline-block;
       animation: heartbeat 1.5s infinite;
     }
 
-    /* Floating details */
+    /* ---------------- MUSIC ---------------- */
+
+    .music-control {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+      border: 1px solid #ddd;
+
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(10px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      font-size: 15px;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition: .3s ease;
+    }
+
+    .music-control.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ---------------- CONFETTI ---------------- */
+
+    .confetti {
+      position: fixed;
+      width: 7px;
+      height: 12px;
+      top: -20px;
+      pointer-events: none;
+      animation: fall linear forwards;
+      z-index: 50;
+    }
+
+    /* ---------------- DECOR ---------------- */
 
     .dot {
       position: fixed;
       width: 5px;
       height: 5px;
-      background: #171717;
       border-radius: 50%;
-      opacity: .12;
+      background: #171717;
+      opacity: .1;
     }
 
-    .dot.one {
+    .dot1 {
       top: 15%;
       left: 12%;
     }
 
-    .dot.two {
+    .dot2 {
       top: 25%;
       right: 15%;
     }
 
-    .dot.three {
-      bottom: 20%;
-      left: 18%;
+    .dot3 {
+      bottom: 18%;
+      left: 17%;
     }
 
-    .dot.four {
-      bottom: 13%;
+    .dot4 {
+      bottom: 12%;
       right: 12%;
+    }
+
+    /* ---------------- ANIMATIONS ---------------- */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     @keyframes reveal {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
       }
 
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes numberIn {
+      from {
+        opacity: 0;
+        transform: scale(.7);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
       }
     }
 
@@ -217,18 +353,36 @@
       }
     }
 
+    @keyframes fall {
+      to {
+        transform:
+          translate3d(
+            var(--x),
+            110vh,
+            0
+          )
+          rotate(720deg);
+        opacity: 0;
+      }
+    }
+
     @media (max-width: 600px) {
-      h1 {
+
+      .intro-title {
         letter-spacing: -3px;
       }
 
-      h2 {
+      .birthday-title {
         letter-spacing: -2px;
       }
 
-      .description,
+      .intro-text,
       .birthday-message {
         font-size: 15px;
+      }
+
+      .countdown {
+        letter-spacing: -5px;
       }
     }
   </style>
@@ -236,33 +390,34 @@
 
 <body>
 
-  <div class="dot one"></div>
-  <div class="dot two"></div>
-  <div class="dot three"></div>
-  <div class="dot four"></div>
+  <!-- Decorative dots -->
+  <div class="dot dot1"></div>
+  <div class="dot dot2"></div>
+  <div class="dot dot3"></div>
+  <div class="dot dot4"></div>
 
 
-  <!-- 01 -->
-  <main class="page" id="screen1">
+  <!-- ================= INTRO ================= -->
+
+  <main class="page" id="intro">
 
     <section class="screen">
 
       <div class="eyebrow">
-        A little something
+        A little surprise
       </div>
 
-      <h1>
-        For Youvi.
+      <h1 class="intro-title">
+        For <em>Youvi.</em>
       </h1>
 
-      <p class="description">
-        Nothing complicated.<br>
-        Just something I wanted you to see today.
+      <p class="intro-text">
+        It's probably nothing huge.<br>
+        But I wanted to make something just for you.
       </p>
 
-      <button onclick="nextScreen(1)">
-        Open
-        <span class="arrow">→</span>
+      <button class="start-btn" onclick="startExperience()">
+        Open your surprise →
       </button>
 
     </section>
@@ -270,30 +425,59 @@
   </main>
 
 
-  <!-- 02 -->
-  <main class="page hidden" id="screen2">
+  <!-- ================= COUNTDOWN ================= -->
+
+  <main class="page hidden" id="countdownScreen">
 
     <section class="screen">
 
-      <div class="small-date">
-        12:00 AM · AUG 12
+      <div class="countdown-label">
+        Something is coming
       </div>
 
-      <h2>
+      <div class="countdown">
+        <span id="countdownNumber" class="countdown-number">
+          12
+        </span>
+      </div>
+
+      <div class="countdown-sub">
+        wait for it...
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= BIRTHDAY ================= -->
+
+  <main class="page hidden" id="birthdayScreen">
+
+    <section class="screen">
+
+      <div class="date">
+        12:00 AM · AUGUST 12
+      </div>
+
+      <h2 class="birthday-title">
         Happy Birthday,
         <br>
-        <span class="name">Youvi.</span>
+        <em>Youvi.</em>
       </h2>
 
       <p class="birthday-message">
         Today is your day.
-        So for a moment, forget everything else
-        and just enjoy being celebrated. ✨
+        So forget everything else for a moment
+        and just enjoy being celebrated.
+        <br><br>
+        I hope this year brings you
+        more happiness, more adventures,
+        and plenty of reasons to smile. ✨
       </p>
 
-      <button onclick="nextScreen(2)">
-        There's more
-        <span class="arrow">→</span>
+      <button class="continue-btn" onclick="showFinal()">
+        One last thing →
       </button>
 
     </section>
@@ -301,79 +485,308 @@
   </main>
 
 
-  <!-- 03 -->
-  <main class="page hidden" id="screen3">
+  <!-- ================= FINAL ================= -->
+
+  <main class="page hidden" id="finalScreen">
 
     <section class="screen">
 
-      <div class="eyebrow">
-        Just a thought
-      </div>
-
-      <div class="quote">
-        "Some people deserve a little
-        <span>extra happiness</span>
-        today."
-      </div>
-
-      <p class="description">
-        And honestly, Youvi,
-        I hope this year gives you plenty of it.
-      </p>
-
-      <button onclick="nextScreen(3)">
-        One last thing
-        <span class="arrow">→</span>
-      </button>
-
-    </section>
-
-  </main>
-
-
-  <!-- 04 -->
-  <main class="page hidden" id="screen4">
-
-    <section class="screen">
-
-      <div class="eyebrow">
-        2026 · Chapter 01
+      <div class="final-eyebrow">
+        Here's to another year
       </div>
 
       <div class="final-title">
-        May this year<br>
-        be kind to you.
+        May this chapter<br>
+        be <em>beautiful.</em>
       </div>
 
-      <p class="final-subtitle">
-        More smiles. More adventures. More reasons to be happy.
+      <p class="final-text">
+        More smiles.<br>
+        More adventures.<br>
+        More unforgettable moments.
       </p>
 
-      <span class="heart">♥</span>
+      <span class="heart">
+        ♥
+      </span>
 
     </section>
 
   </main>
 
 
+  <!-- ================= MUSIC ================= -->
+
+  <!--
+    IMPORTANT:
+    Put your MP3 file in the same folder as this HTML
+    and name it exactly:
+
+    music.mp3
+  -->
+
+  <audio id="birthdayMusic" preload="auto" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <!-- Music button -->
+
+  <button
+    id="musicButton"
+    class="music-control"
+    onclick="toggleMusic()"
+    aria-label="Toggle music"
+  >
+    ♪
+  </button>
+
+
   <script>
-    function nextScreen(current) {
 
-      const currentScreen =
-        document.getElementById("screen" + current);
+    const intro = document.getElementById("intro");
+    const countdownScreen =
+      document.getElementById("countdownScreen");
 
-      const nextScreenElement =
-        document.getElementById("screen" + (current + 1));
+    const birthdayScreen =
+      document.getElementById("birthdayScreen");
 
-      currentScreen.classList.add("hidden");
+    const finalScreen =
+      document.getElementById("finalScreen");
 
-      nextScreenElement.classList.remove("hidden");
+    const countdownNumber =
+      document.getElementById("countdownNumber");
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+    const music =
+      document.getElementById("birthdayMusic");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+
+    let musicPlaying = false;
+
+
+    /* ================= START ================= */
+
+    function startExperience() {
+
+      intro.classList.add("hidden");
+
+      countdownScreen.classList.remove("hidden");
+
+      /*
+        Browser autoplay rules allow audio
+        because this function is triggered
+        by the user's click.
+      */
+
+      music.volume = 0;
+
+      music.play()
+        .then(() => {
+
+          musicPlaying = true;
+
+          musicButton.classList.add("show");
+
+          fadeMusicIn();
+
+        })
+        .catch(() => {
+
+          console.log("Music needs user interaction.");
+
+        });
+
+
+      startCountdown();
+
     }
+
+
+    /* ================= MUSIC FADE ================= */
+
+    function fadeMusicIn() {
+
+      let volume = 0;
+
+      const fade = setInterval(() => {
+
+        volume += 0.02;
+
+        if (volume >= 0.45) {
+
+          volume = 0.45;
+
+          clearInterval(fade);
+
+        }
+
+        music.volume = volume;
+
+      }, 100);
+
+    }
+
+
+    /* ================= COUNTDOWN ================= */
+
+    function startCountdown() {
+
+      let number = 12;
+
+      countdownNumber.textContent = number;
+
+      const interval = setInterval(() => {
+
+        number--;
+
+        if (number <= 0) {
+
+          clearInterval(interval);
+
+          revealBirthday();
+
+          return;
+
+        }
+
+        countdownNumber.classList.remove(
+          "countdown-number"
+        );
+
+        void countdownNumber.offsetWidth;
+
+        countdownNumber.classList.add(
+          "countdown-number"
+        );
+
+        countdownNumber.textContent = number;
+
+      }, 1000);
+
+    }
+
+
+    /* ================= BIRTHDAY REVEAL ================= */
+
+    function revealBirthday() {
+
+      countdownScreen.classList.add("hidden");
+
+      birthdayScreen.classList.remove("hidden");
+
+      createConfetti();
+
+    }
+
+
+    /* ================= FINAL ================= */
+
+    function showFinal() {
+
+      birthdayScreen.classList.add("hidden");
+
+      finalScreen.classList.remove("hidden");
+
+      createConfetti();
+
+    }
+
+
+    /* ================= MUSIC CONTROL ================= */
+
+    function toggleMusic() {
+
+      if (music.paused) {
+
+        music.play();
+
+        musicPlaying = true;
+
+        musicButton.textContent = "♪";
+
+      } else {
+
+        music.pause();
+
+        musicPlaying = false;
+
+        musicButton.textContent = "×";
+
+      }
+
+    }
+
+
+    /* ================= CONFETTI ================= */
+
+    function createConfetti() {
+
+      const amount = 80;
+
+      for (let i = 0; i < amount; i++) {
+
+        const piece =
+          document.createElement("div");
+
+        piece.classList.add("confetti");
+
+        const size =
+          Math.random() * 6 + 4;
+
+        piece.style.width = size + "px";
+        piece.style.height =
+          size * 1.6 + "px";
+
+        piece.style.left =
+          Math.random() * 100 + "vw";
+
+        piece.style.background =
+          getRandomColor();
+
+        piece.style.setProperty(
+          "--x",
+          (Math.random() * 300 - 150) + "px"
+        );
+
+        piece.style.animationDuration =
+          (Math.random() * 2 + 2.5) + "s";
+
+        piece.style.animationDelay =
+          Math.random() * .7 + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+
+          piece.remove();
+
+        }, 5000);
+
+      }
+
+    }
+
+
+    function getRandomColor() {
+
+      const colors = [
+        "#171717",
+        "#777777",
+        "#aaaaaa",
+        "#d6c7b8",
+        "#b8a99a",
+        "#e5ded5"
+      ];
+
+      return colors[
+        Math.floor(Math.random() * colors.length)
+      ];
+
+    }
+
   </script>
 
 </body>
