@@ -1,0 +1,381 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>For Youvi ✨</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background: #f8f7f4;
+      color: #171717;
+      font-family: "DM Sans", sans-serif;
+      overflow: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .screen {
+      width: 100%;
+      max-width: 850px;
+      text-align: center;
+      animation: reveal 0.9s cubic-bezier(.22,1,.36,1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 28px;
+    }
+
+    h1,
+    h2,
+    .final-title {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(60px, 12vw, 120px);
+      letter-spacing: -5px;
+      line-height: .95;
+    }
+
+    h2 {
+      font-size: clamp(45px, 8vw, 82px);
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+
+    .name {
+      font-style: italic;
+    }
+
+    .description {
+      max-width: 470px;
+      margin: 30px auto 38px;
+      color: #777;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    button {
+      border: 0;
+      outline: 0;
+      background: #171717;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      background: #292929;
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+
+    .arrow {
+      margin-left: 8px;
+    }
+
+    /* Birthday */
+
+    .small-date {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 3px;
+      margin-bottom: 28px;
+    }
+
+    .birthday-message {
+      margin: 32px auto 38px;
+      max-width: 500px;
+      color: #6f6f6f;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    /* Quote */
+
+    .quote {
+      max-width: 700px;
+      margin: 35px auto 42px;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.35;
+    }
+
+    .quote span {
+      color: #999;
+    }
+
+    /* Final */
+
+    .final-title {
+      font-size: clamp(40px, 7vw, 72px);
+      line-height: 1.15;
+    }
+
+    .final-subtitle {
+      margin-top: 25px;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .heart {
+      margin-top: 35px;
+      font-size: 22px;
+      display: inline-block;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    /* Floating details */
+
+    .dot {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      background: #171717;
+      border-radius: 50%;
+      opacity: .12;
+    }
+
+    .dot.one {
+      top: 15%;
+      left: 12%;
+    }
+
+    .dot.two {
+      top: 25%;
+      right: 15%;
+    }
+
+    .dot.three {
+      bottom: 20%;
+      left: 18%;
+    }
+
+    .dot.four {
+      bottom: 13%;
+      right: 12%;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      h2 {
+        letter-spacing: -2px;
+      }
+
+      .description,
+      .birthday-message {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dot one"></div>
+  <div class="dot two"></div>
+  <div class="dot three"></div>
+  <div class="dot four"></div>
+
+
+  <!-- 01 -->
+  <main class="page" id="screen1">
+
+    <section class="screen">
+
+      <div class="eyebrow">
+        A little something
+      </div>
+
+      <h1>
+        For Youvi.
+      </h1>
+
+      <p class="description">
+        Nothing complicated.<br>
+        Just something I wanted you to see today.
+      </p>
+
+      <button onclick="nextScreen(1)">
+        Open
+        <span class="arrow">→</span>
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- 02 -->
+  <main class="page hidden" id="screen2">
+
+    <section class="screen">
+
+      <div class="small-date">
+        12:00 AM · AUG 12
+      </div>
+
+      <h2>
+        Happy Birthday,
+        <br>
+        <span class="name">Youvi.</span>
+      </h2>
+
+      <p class="birthday-message">
+        Today is your day.
+        So for a moment, forget everything else
+        and just enjoy being celebrated. ✨
+      </p>
+
+      <button onclick="nextScreen(2)">
+        There's more
+        <span class="arrow">→</span>
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- 03 -->
+  <main class="page hidden" id="screen3">
+
+    <section class="screen">
+
+      <div class="eyebrow">
+        Just a thought
+      </div>
+
+      <div class="quote">
+        "Some people deserve a little
+        <span>extra happiness</span>
+        today."
+      </div>
+
+      <p class="description">
+        And honestly, Youvi,
+        I hope this year gives you plenty of it.
+      </p>
+
+      <button onclick="nextScreen(3)">
+        One last thing
+        <span class="arrow">→</span>
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- 04 -->
+  <main class="page hidden" id="screen4">
+
+    <section class="screen">
+
+      <div class="eyebrow">
+        2026 · Chapter 01
+      </div>
+
+      <div class="final-title">
+        May this year<br>
+        be kind to you.
+      </div>
+
+      <p class="final-subtitle">
+        More smiles. More adventures. More reasons to be happy.
+      </p>
+
+      <span class="heart">♥</span>
+
+    </section>
+
+  </main>
+
+
+  <script>
+    function nextScreen(current) {
+
+      const currentScreen =
+        document.getElementById("screen" + current);
+
+      const nextScreenElement =
+        document.getElementById("screen" + (current + 1));
+
+      currentScreen.classList.add("hidden");
+
+      nextScreenElement.classList.remove("hidden");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
+
+</body>
+</html>
+```
